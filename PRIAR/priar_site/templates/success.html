@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% extends "base.html" %}
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Авторизация</title> 
+</head>
+
+{% block success %}
+<body>
+    <div class="registration-cssave">
+        <h1>Благодарим за регистрацию!</h1>
+        <a href="/" class="underline-one"><h2>На главную</h2></a>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">  
+</body>
+{% endblock success %}
+</html>

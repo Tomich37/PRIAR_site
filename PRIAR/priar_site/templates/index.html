@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<body class="animsition">
+	<!-- HERO SECTION  -->
+	<div class="wrapper" >
+		<div class="site-hero">
+			<ul class="slides">
+				<li>
+					<div class="big-title uppercase montserrat-text">ПРИАР</div>
+					<p>Сайт предназначен для оказания помощи в вопросах юриспруденции.</p>
+				</li>				
+			</ul>
+		</div>
+		<!-- HISTORY OF AGENCY -->
+		<div class="container">
+			<div class="agency">
+				<div class="col-md-5 col-sm-12">
+					<div class="row">
+						<img src="{% static 'images/agency.jpg' %}" alt="image">
+					</div>
+				</div>
+				<div class="col-md-offset-1 col-md-6 col-sm-12">
+					<div class="row">
+						<div class="section-title">
+							<span>История фирмы</span>
+						</div>
+						<p>
+							Фирма была создана в 2022 году. Все возможные виды юридических услуг для юридических лиц, физических лиц и ИП.
+							Большой положительный опыт работы в арбитражном суде и суде общей юрисдикции. 
+							Юридические консультации любой сложности.
+
+						</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- WHY CHOOSE US -->
+		<section class="services">
+			<div class="container">
+				<div class="row">
+					<div class="section-title">
+						<span>О фирме</span>
+						
+					</div>
+				</div>
+				
+				<div class="col-md-7 col-sm-12 services-left wow fadeInUp">
+					<div class="row" style="margin-bottom:50px">
+						<div class="col-md-6 col-sm-12">
+							<div class="row">
+								
+								<span class="montserrat-text uppercase service-title">Время работы</span>
+								<ul>
+								<li>Пн 09:00-17:00</li>
+								<li>Вт 09:00-17:00</li>
+								<li>Ср 09:00-17:00</li>
+								<li>Чт 09:00-17:00</li>
+								<li>Пт 09:00-17:00</li>
+								<li>Сб Выходной</li>
+								<li>Вс Выходной</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<div class="row">
+								
+								<span class="montserrat-text uppercase service-title">Контакты</span>
+								<ul>
+									<li>+7 (123) 568-00-45</li>
+									<li>pochta1@gmail.com</li>
+								
+								</ul>
+							</div>
+						</div>
+					</div>
+			
+				</div>
+
+			</div>
+		</section>
+	</div>
+</body>
+
+<!-- SCRIPTS -->
+<script type="text/javascript" charset="utf-8">
+	$(window).load(function() {
+		new WOW().init();
+
+		// initialise flexslider
+		$('.site-hero').flexslider({
+			animation: "fade",
+			directionNav: false,
+			controlNav: false, 
+			keyboardNav: true,
+			slideToStart: 0,
+			animationLoop: true,
+			pauseOnHover: false,
+			slideshowSpeed: 4000, 
+		});
+
+
+		// initialize isotope
+		var $container = $('.portfolio_container');
+		$container.isotope({
+			filter: '*',
+		});
+		
+		$('.portfolio_filter a').click(function(){
+			$('.portfolio_filter .active').removeClass('active');
+			$(this).addClass('active');
+		
+			var selector = $(this).attr('data-filter');
+			$container.isotope({
+				filter: selector,
+				animationOptions: {
+					duration: 500,
+					animationEngine : "jquery"
+				}
+			});
+			return false;
+		}); 
+	});
+</script>
+	{% endblock body %}
+</html>
