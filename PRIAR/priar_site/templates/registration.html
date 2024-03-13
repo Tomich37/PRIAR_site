@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    {% extends "base.html" %}
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Авторизация</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">    
+    <title>Авторизация</title> 
 </head>
 
+{% block registration %}
 <body>
-    <form method="post" action="{% url 'create_user' %}">
-        {% csrf_token %}
-        <label for="login">Логин:</label>
-        <input type="text" id="login" name="login" required><br><br>
-        
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <label for="region">Регион:</label>
-        <input type="text" id="region" name="region" required><br><br>
-        
-        <input type="submit" value="Создать пользователя">
-    </form>
+    <div class="registration-cssave">
+        <form method="post" action="{% url 'create_user' %}">
+            {% csrf_token %}
+            <h3 class="text-center">Регистрация</h3>
+            <div class="form-group">
+                <input class="form-control item" type="text" id="login" name="login" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" placeholder="Логин" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control item" type="password" name="password" minlength="5" id="password" placeholder="Пароль" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control item" type="email" id="email" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" size="30" placeholder="Email" required>
+            </div>            
+            <input type="submit" class="btn btn-primary btn-block create-account" value="Зарегистрироваться">
+        </form>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">  
 </body>
+{% endblock registration %}
 </html>

@@ -31,10 +31,13 @@
                     <li><a href="/" class="animsition-link">Главная</a></li>
                     <li><a href="/about" class="animsition-link">О нас</a></li>
                     <li><a href="/services" class="animsition-link">Услуги</a></li>
-                        <!-- <li><a  href="#" class="but">Личный кабинет</a></li> -->
-                        <!-- <li><a  href="/logout/"   class="but">выход</a></li> -->
+                    {% if user.is_authenticated %}
+                        <li><a  href="#" class="but">Личный кабинет</a></li>
+                        <li><a  href="/logout/"   class="but">выход</a></li>
+                    {% else %}
                         <li><a id='auth' class="but" href="/login">Авторизация</a></li>
-                        <li><a id="reg" class="but">Регистрация</a></li>
+                        <li><a id="reg" class="but" href="/registration">Регистрация</a></li>
+                    {% endif %}
                 </ul>
             </nav>
             <!-- mobile navbar -->
@@ -58,6 +61,8 @@
 {% endblock services %}
 
 {% block login %} 
+{% block registration %} 
+{% block success %}
 
 
 <!-- FOOTER -->
@@ -73,4 +78,7 @@
     </footer>
 </section>
 
+{% endblock success %}
+{% endblock registration %}
 {% endblock login %}
+
